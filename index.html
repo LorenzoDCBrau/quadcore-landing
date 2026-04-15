@@ -103,7 +103,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;padding:0 48px;d
 .connect-sec{padding:100px 48px;position:relative;overflow:hidden;background:linear-gradient(180deg,#000 0%,#030015 30%,#060025 60%,#000 100%)}
 .connect-sec::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
 .connect-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
-.connect-diagram{position:relative;height:500px}
+.connect-mobile{display:none}
 #connect-canvas{width:100%;height:100%;display:block}
 
 /* BANNER */
@@ -248,14 +248,43 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,.07);display:flex
 
 /* ── RESPONSIVE MOBILE ── */
 @media (max-width:480px){
+  /* FIX 1: Hero - less height, text more prominent */
+  .hero{min-height:auto;padding:80px 16px 40px;align-items:flex-start}
   .hero h1{font-size:36px;letter-spacing:-1px}
   .hero-btns{flex-direction:column;gap:10px}
   .hero-btns a{width:100%;justify-content:center;text-align:center}
   .btn-p,.btn-o{padding:13px 20px;font-size:14px}
+
+  /* FIX 2: Globe - centered */
+  .globe-sec{align-items:center;text-align:center}
+  .globe-wrap{width:100%;max-width:300px;height:260px;margin:0 auto}
+  .globe-text{text-align:left}
+  .globe-glow{width:260px;height:260px}
+
+  /* FIX 3: Counters - 2x2 grid, no overflow */
+  .c-row{grid-template-columns:1fr 1fr;gap:0}
+  .c-item{padding:20px 10px;border-right:1px solid rgba(255,255,255,.07)}
+  .c-item:nth-child(2){border-right:none}
+  .c-item:nth-child(3){border-top:1px solid rgba(255,255,255,.07);border-right:1px solid rgba(255,255,255,.07)}
+  .c-item:nth-child(4){border-top:1px solid rgba(255,255,255,.07);border-right:none}
+  .fw{display:flex;gap:2px;justify-content:center;flex-wrap:wrap}
+  .fd{width:22px;height:36px;font-size:16px;border-radius:4px}
+  .fd.sep{width:8px;font-size:14px}
+  .c-name{font-size:9px;letter-spacing:1.5px}
+
+  /* FIX 4: Workflow diagram - stack vertically on mobile */
+  .connect-diagram{height:auto;min-height:600px}
+  #connect-canvas{display:none}
+  .connect-mobile{display:flex;flex-direction:column;gap:12px;padding:8px 0}
+  .cm-node{background:#08001c;border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 18px;position:relative}
+  .cm-node::after{content:'↓';position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.2);font-size:16px}
+  .cm-node:last-child::after{display:none}
+  .cm-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
+  .cm-sub{font-size:11px;color:rgba(255,255,255,.4);font-family:'JetBrains Mono',monospace}
+
+  /* Other mobile fixes */
   .band-inner h2{font-size:28px}
   .sh{font-size:26px}
-  .c-row{grid-template-columns:1fr 1fr}
-  .fd{width:26px;height:42px;font-size:20px}
   .feat-grid{grid-template-columns:1fr}
   .fc{padding:28px 20px}
   .tech-grid{grid-template-columns:repeat(3,1fr);gap:6px}
@@ -272,7 +301,6 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,.07);display:flex
   footer{gap:10px}
   .fls{gap:16px}
   nav{padding:0 16px}
-  .glob-text .sp{font-size:14px}
   .contact-form{padding:24px 16px}
 }
 </style>
@@ -366,6 +394,16 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,.07);display:flex
     </div>
     <div class="connect-diagram">
       <canvas id="connect-canvas"></canvas>
+    </div>
+    <div class="connect-mobile">
+      <div class="cm-node" style="border-color:rgba(124,58,237,.4)"><div class="cm-title">💬 Chat</div><div class="cm-sub">Describe it</div></div>
+      <div class="cm-node" style="border-color:rgba(168,85,247,.4)"><div class="cm-title">⚡ Generate</div><div class="cm-sub">Claude AI</div></div>
+      <div class="cm-node" style="border-color:rgba(56,189,248,.4)"><div class="cm-title">▶ Preview</div><div class="cm-sub">Live render</div></div>
+      <div class="cm-node" style="border-color:rgba(6,182,212,.4)"><div class="cm-title">◧ Edit</div><div class="cm-sub">Monaco</div></div>
+      <div class="cm-node" style="border-color:rgba(0,229,192,.4)"><div class="cm-title">◈ Commit</div><div class="cm-sub">GitHub</div></div>
+      <div class="cm-node" style="border-color:rgba(245,158,11,.4)"><div class="cm-title">✓ Test</div><div class="cm-sub">Validation</div></div>
+      <div class="cm-node" style="border-color:rgba(0,229,192,.4)"><div class="cm-title">🚀 Deploy</div><div class="cm-sub">Railway</div></div>
+      <div class="cm-node" style="border-color:rgba(34,211,238,.4)"><div class="cm-title">◉ Live</div><div class="cm-sub">Production</div></div>
     </div>
   </div>
 </section>
