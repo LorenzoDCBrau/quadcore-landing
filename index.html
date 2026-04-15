@@ -257,9 +257,10 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,.07);display:flex
 
   /* FIX 2: Globe - centered */
   .globe-sec{align-items:center;text-align:center}
-  .globe-wrap{width:100%;max-width:300px;height:260px;margin:0 auto}
-  .globe-text{text-align:left}
+  .globe-wrap{width:280px;height:260px;margin:0 auto;flex:none}
+  .globe-text{text-align:left;width:100%}
   .globe-glow{width:260px;height:260px}
+  #globe-canvas{width:280px;height:260px}
 
   /* FIX 3: Counters - 2x2 grid, no overflow */
   .c-row{grid-template-columns:1fr 1fr;gap:0}
@@ -273,9 +274,8 @@ footer{padding:40px 48px;border-top:1px solid rgba(255,255,255,.07);display:flex
   .c-name{font-size:9px;letter-spacing:1.5px}
 
   /* FIX 4: Workflow diagram - stack vertically on mobile */
-  .connect-diagram{height:auto;min-height:600px}
-  #connect-canvas{display:none}
-  .connect-mobile{display:flex;flex-direction:column;gap:12px;padding:8px 0}
+  .connect-diagram{display:none}
+  .connect-mobile{display:flex;flex-direction:column;gap:12px;padding:8px 0;width:100%}
   .cm-node{background:#08001c;border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 18px;position:relative}
   .cm-node::after{content:'↓';position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.2);font-size:16px}
   .cm-node:last-child::after{display:none}
